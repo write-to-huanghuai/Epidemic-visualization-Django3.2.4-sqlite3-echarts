@@ -1,0 +1,1332 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>中国疫情大数据分析平台</title>
+    <link href="{% static 'css/bootstrap.css' %}" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'css/base.css' %}">
+    <link rel="stylesheet" href="{% static 'css/index.css' %}">
+
+    <style>
+        .t_title {
+            width: 100%;
+            height: 100%;
+            text-align: center;
+            font-size: 2.5em;
+            line-height: 80px;
+            color: #fff;
+        }
+
+        #chart_map {
+            cursor: pointer;
+        }
+
+        .t_show {
+            position: absolute;
+            top: 0;
+            right: 0;
+            border-radius: 2px;
+            background: #2C58A6;
+            padding: 2px 5px;
+            color: #fff;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+
+<!--header-->
+<div class="header">
+    <div class="bg_header">
+        <div class="header_nav fl t_title">
+            中国疫情大数据分析平台
+        </div>
+    </div>
+</div>
+
+<!--main-->
+<div class="data_content">
+    <div class="data_time">
+        温馨提示: 点击模块后跳转至详情页面。
+    </div>
+
+    <div class="data_main">
+        <div class="main_left fl">
+            <div class="left_1 t_btn6" style="cursor: pointer;">
+                <!--左上边框-->
+                <div class="t_line_box">
+                    <i class="t_l_line"></i>
+                    <i class="l_t_line"></i>
+                </div>
+                <!--右上边框-->
+                <div class="t_line_box">
+                    <i class="t_r_line"></i>
+                    <i class="r_t_line"></i>
+                </div>
+                <!--左下边框-->
+                <div class="t_line_box">
+                    <i class="l_b_line"></i>
+                    <i class="b_l_line"></i>
+                </div>
+                <!--右下边框-->
+                <div class="t_line_box">
+                    <i class="r_b_line"></i>
+                    <i class="b_r_line"></i>
+                </div>
+                <div class="main_title">
+                    <img src="{% static 'img/t_1.png' %}" alt="">积极高频词
+                </div>
+                <div id="chart_1" class="chart" style="width:100%;height: 280px;"></div>
+            </div>
+            <div class="left_2" style="cursor: pointer;">
+                <!--左上边框-->
+                <div class="t_line_box">
+                    <i class="t_l_line"></i>
+                    <i class="l_t_line"></i>
+                </div>
+                <!--右上边框-->
+                <div class="t_line_box">
+                    <i class="t_r_line"></i>
+                    <i class="r_t_line"></i>
+                </div>
+                <!--左下边框-->
+                <div class="t_line_box">
+                    <i class="l_b_line"></i>
+                    <i class="b_l_line"></i>
+                </div>
+                <!--右下边框-->
+                <div class="t_line_box">
+                    <i class="r_b_line"></i>
+                    <i class="b_r_line"></i>
+                </div>
+                <div class="main_title">
+                    <img src="{% static 'img/t_2.png' %}" alt="">中性高频词
+                </div>
+                <div id="chart_2" class="chart t_btn9" style="width:100%;height: 280px;"></div>
+            </div>
+        </div>
+        <div class="main_center fl">
+            <div class="center_text">
+                <!--左上边框-->
+                <div class="t_line_box">
+                    <i class="t_l_line"></i>
+                    <i class="l_t_line"></i>
+                </div>
+                <!--右上边框-->
+                <div class="t_line_box">
+                    <i class="t_r_line"></i>
+                    <i class="r_t_line"></i>
+                </div>
+                <!--左下边框-->
+                <div class="t_line_box">
+                    <i class="l_b_line"></i>
+                    <i class="b_l_line"></i>
+                </div>
+                <!--右下边框-->
+                <div class="t_line_box">
+                    <i class="r_b_line"></i>
+                    <i class="b_r_line"></i>
+                </div>
+                <div class="main_title">
+                    <img src="{% static 'img/t_3.png' %}" alt=""> 微博词云图
+                </div>
+                <div id="chart_map" style="width:100%;height:610px;"></div>
+            </div>
+        </div>
+        <div class="main_right fr">
+            <div class="right_1">
+                <!--左上边框-->
+                <div class="t_line_box">
+                    <i class="t_l_line"></i>
+                    <i class="l_t_line"></i>
+                </div>
+                <!--右上边框-->
+                <div class="t_line_box">
+                    <i class="t_r_line"></i>
+                    <i class="r_t_line"></i>
+                </div>
+                <!--左下边框-->
+                <div class="t_line_box">
+                    <i class="l_b_line"></i>
+                    <i class="b_l_line"></i>
+                </div>
+                <!--右下边框-->
+                <div class="t_line_box">
+                    <i class="r_b_line"></i>
+                    <i class="b_r_line"></i>
+                </div>
+                <div class="main_title">
+                    <img src="{% static 'img/t_4.png' %}" alt=""> 消极高频词
+                </div>
+                <div id="chart_3" class="echart t_btn7" style="width:100%;height: 280px;"></div>
+            </div>
+            <div class="right_2">
+                <!--左上边框-->
+                <div class="t_line_box">
+                    <i class="t_l_line"></i>
+                    <i class="l_t_line"></i>
+                </div>
+                <!--右上边框-->
+                <div class="t_line_box">
+                    <i class="t_r_line"></i>
+                    <i class="r_t_line"></i>
+                </div>
+                <!--左下边框-->
+                <div class="t_line_box">
+                    <i class="l_b_line"></i>
+                    <i class="b_l_line"></i>
+                </div>
+                <!--右下边框-->
+                <div class="t_line_box">
+                    <i class="r_b_line"></i>
+                    <i class="b_r_line"></i>
+                </div>
+                <div class="main_title">
+                    <img src="{% static 'img/t_5.png' %}" alt="">
+                </div>
+                <div id="chart_4" class="echart fl t_btn4" style="width:100%;height: 280px;cursor: pointer;"></div>
+            </div>
+        </div>
+    </div>
+    <div class="data_bottom">
+        <div class="bottom_1 fl t_btn5" style="cursor: pointer;">
+            <!--左上边框-->
+            <div class="t_line_box">
+                <i class="t_l_line"></i>
+                <i class="l_t_line"></i>
+            </div>
+            <!--右上边框-->
+            <div class="t_line_box">
+                <i class="t_r_line"></i>
+                <i class="r_t_line"></i>
+            </div>
+            <!--左下边框-->
+            <div class="t_line_box">
+                <i class="l_b_line"></i>
+                <i class="b_l_line"></i>
+            </div>
+            <!--右下边框-->
+            <div class="t_line_box">
+                <i class="r_b_line"></i>
+                <i class="b_r_line"></i>
+            </div>
+            <div class="main_title">
+                <img src="{% static 'img/t_6.png' %}" alt="">
+            </div>
+            <div id="chart_5" class="echart fl" style="width:100%;height: 250px;margin-top: 15px;"></div>
+        </div>
+        <div class="bottom_center fl">
+            <div class="bottom_2 fl">
+                <!--左上边框-->
+                <div class="t_line_box">
+                    <i class="t_l_line"></i>
+                    <i class="l_t_line"></i>
+                </div>
+                <!--右上边框-->
+                <div class="t_line_box">
+                    <i class="t_r_line"></i>
+                    <i class="r_t_line"></i>
+                </div>
+                <!--左下边框-->
+                <div class="t_line_box">
+                    <i class="l_b_line"></i>
+                    <i class="b_l_line"></i>
+                </div>
+                <!--右下边框-->
+                <div class="t_line_box">
+                    <i class="r_b_line"></i>
+                    <i class="b_r_line"></i>
+                </div>
+                <div class="main_title">
+                    <img src="{% static 'img/t_7.png' %}" alt="">
+                </div>
+                <div class="main_table t_btn8">
+                    <div id="chart_6" class="chart" style="width:100%;height: 280px;"></div>
+                </div>
+            </div>
+            <div class="bottom_3 fl">
+                <!--左上边框-->
+                <div class="t_line_box">
+                    <i class="t_l_line"></i>
+                    <i class="l_t_line"></i>
+                </div>
+                <!--右上边框-->
+                <div class="t_line_box">
+                    <i class="t_r_line"></i>
+                    <i class="r_t_line"></i>
+                </div>
+                <!--左下边框-->
+                <div class="t_line_box">
+                    <i class="l_b_line"></i>
+                    <i class="b_l_line"></i>
+                </div>
+                <!--右下边框-->
+                <div class="t_line_box">
+                    <i class="r_b_line"></i>
+                    <i class="b_r_line"></i>
+                </div>
+                <div class="main_title">
+                    <img src="{% static 'img/t_7.png' %}" alt="">
+                </div>
+                <div class="main_table t_btn2">
+                    <div id="chart_7" class="chart" style="width:100%;height: 280px;"></div>
+                </div>
+            </div>
+        </div>
+        <div class="bottom_4 fr">
+            <!--左上边框-->
+            <div class="t_line_box">
+                <i class="t_l_line"></i>
+                <i class="l_t_line"></i>
+            </div>
+            <!--右上边框-->
+            <div class="t_line_box">
+                <i class="t_r_line"></i>
+                <i class="r_t_line"></i>
+            </div>
+            <!--左下边框-->
+            <div class="t_line_box">
+                <i class="l_b_line"></i>
+                <i class="b_l_line"></i>
+            </div>
+            <!--右下边框-->
+            <div class="t_line_box">
+                <i class="r_b_line"></i>
+                <i class="b_r_line"></i>
+            </div>
+            <div class="main_title">
+                <img src="{% static 'img/t_7.png' %}" alt="">
+            </div>
+            <div class="main_table t_btn3">
+                <div id="chart_8" class="chart" style="width:100%;height: 280px;"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+</body>
+<script src="{% static 'js/jquery-2.2.1.min.js' %}"></script>
+<script src="{% static 'js/bootstrap.min.js' %}"></script>
+<script src="{% static 'js/common.js' %}"></script>
+<script src="{% static 'js/echarts.min.js' %}"></script>
+<script src="{% static 'js/dataTool.js' %}"></script>
+<script src="{% static 'js/china.js' %}"></script>
+<script src="{% static 'js/hubei.js' %}"></script>
+<script src="{% static 'js/echarts-wordcloud.js' %}"></script>
+<script src='https://cdn.jsdelivr.net/npm/echarts@5/dist/echarts.min.js'></script>
+<script src='{% static '/js/echarts-wordcloud.js' %}'></script>
+
+<script type="text/javascript">
+    echart_1()
+    echart_2()
+    echart_3()
+    echart_4()
+
+    function echart_1() {
+        let chart = echarts.init(document.getElementById('chart_map'));
+
+        let option = {
+            tooltip: {},
+            series: [{
+                type: 'wordCloud',
+                gridSize: 2,
+                sizeRange: [12, 50],
+                rotationRange: [-90, 90],
+                shape: 'pentagon',
+                width: 5000,
+                height: 5000,
+                drawOutOfBound: true,
+                textStyle: {
+                    color: function () {
+                        return 'rgb(' + [
+                            Math.round(Math.random() * 160),
+                            Math.round(Math.random() * 160),
+                            Math.round(Math.random() * 160)
+                        ].join(',') + ')';
+                    }
+                },
+                emphasis: {
+                    textStyle: {
+                        shadowBlur: 10,
+                        shadowColor: '#333'
+                    }
+                },
+                data: [
+                    {
+                        name: 'Sam S Club',
+                        value: 10000,
+                        textStyle: {
+                            color: 'red'
+                        },
+                        emphasis: {
+                            textStyle: {
+                                color: 'red'
+                            }
+                        }
+                    },
+                    {
+                        name: 'Macys',
+                        value: 6181
+                    },
+                    {
+                        name: 'Amy Schumer',
+                        value: 4386
+                    },
+                    {
+                        name: 'Jurassic World',
+                        value: 4055
+                    },
+                    {
+                        name: 'Charter Communications',
+                        value: 2467
+                    },
+                    {
+                        name: 'Chick Fil A',
+                        value: 2244
+                    },
+                    {
+                        name: 'Planet Fitness',
+                        value: 1898
+                    },
+                    {
+                        name: 'Pitch Perfect',
+                        value: 1484
+                    },
+                    {
+                        name: 'Express',
+                        value: 1112
+                    },
+                    {
+                        name: 'Home',
+                        value: 965
+                    },
+                    {
+                        name: 'Johnny Depp',
+                        value: 847
+                    },
+                    {
+                        name: 'Lena Dunham',
+                        value: 582
+                    },
+                    {
+                        name: 'Lewis Hamilton',
+                        value: 555
+                    },
+                    {
+                        name: 'KXAN',
+                        value: 550
+                    },
+                    {
+                        name: 'Mary Ellen Mark',
+                        value: 462
+                    },
+                    {
+                        name: 'Farrah Abraham',
+                        value: 366
+                    },
+                    {
+                        name: 'Rita Ora',
+                        value: 360
+                    },
+                    {
+                        name: 'Serena Williams',
+                        value: 282
+                    },
+                    {
+                        name: 'NCAA baseball tournament',
+                        value: 273
+                    },
+                    {
+                        name: 'Point Break',
+                        value: 265
+                    },
+                    {
+                        name: 'Johnny Depp',
+                        value: 847
+                    },
+                    {
+                        name: 'Lena Dunham',
+                        value: 582
+                    },
+                    {
+                        name: 'Lewis Hamilton',
+                        value: 555
+                    },
+                    {
+                        name: 'KXAN',
+                        value: 550
+                    },
+                    {
+                        name: 'Mary Ellen Mark',
+                        value: 462
+                    },
+                    {
+                        name: 'Farrah Abraham',
+                        value: 366
+                    },
+                    {
+                        name: 'Rita Ora',
+                        value: 360
+                    },
+                    {
+                        name: 'Serena Williams',
+                        value: 282
+                    },
+                    {
+                        name: 'NCAA baseball tournament',
+                        value: 273
+                    },
+                    {
+                        name: 'Point Break',
+                        value: 265
+                    },
+                    {
+                        name: 'Johnny Depp',
+                        value: 847
+                    },
+                    {
+                        name: 'Lena Dunham',
+                        value: 582
+                    },
+                    {
+                        name: 'Lewis Hamilton',
+                        value: 555
+                    },
+                    {
+                        name: 'KXAN',
+                        value: 550
+                    },
+                    {
+                        name: 'Mary Ellen Mark',
+                        value: 462
+                    },
+                    {
+                        name: 'Farrah Abraham',
+                        value: 366
+                    },
+                    {
+                        name: 'Rita Ora',
+                        value: 360
+                    },
+                    {
+                        name: 'Serena Williams',
+                        value: 282
+                    },
+                    {
+                        name: 'NCAA baseball tournament',
+                        value: 273
+                    },
+                    {
+                        name: 'Point Break',
+                        value: 265
+                    },
+                    {
+                        name: 'Johnny Depp',
+                        value: 847
+                    },
+                    {
+                        name: 'Lena Dunham',
+                        value: 582
+                    },
+                    {
+                        name: 'Lewis Hamilton',
+                        value: 555
+                    },
+                    {
+                        name: 'KXAN',
+                        value: 550
+                    },
+                    {
+                        name: 'Mary Ellen Mark',
+                        value: 462
+                    },
+                    {
+                        name: 'Farrah Abraham',
+                        value: 366
+                    },
+                    {
+                        name: 'Rita Ora',
+                        value: 360
+                    },
+                    {
+                        name: 'Serena Williams',
+                        value: 282
+                    },
+                    {
+                        name: 'NCAA baseball tournament',
+                        value: 273
+                    },
+                    {
+                        name: 'Point Break',
+                        value: 265
+                    }
+                ]
+            }]
+        };
+
+        let word = {{ word_list|safe }};
+        let num = {{ num_list |safe}};
+
+        for (let i = 0; i < 50; i++) {
+            option.series[0].data[i].name = word[i]
+            option.series[0].data[i].value = num[i]
+        }
+        chart.setOption(option);
+
+        window.onresize = chart.resize;
+    }
+
+    function echart_2() {
+        {# 积极 #}
+        let chart2 = echarts.init(document.getElementById('chart_1'));
+
+        let option2 = {
+            tooltip: {},
+            series: [{
+                type: 'wordCloud',
+                gridSize: 2,
+                sizeRange: [12, 50],
+                rotationRange: [-90, 90],
+                shape: 'pentagon',
+                width: 5000,
+                height: 5000,
+                drawOutOfBound: true,
+                textStyle: {
+                    color: function () {
+                        return 'rgb(' + [
+                            Math.round(Math.random() * 160),
+                            Math.round(Math.random() * 160),
+                            Math.round(Math.random() * 160)
+                        ].join(',') + ')';
+                    }
+                },
+                emphasis: {
+                    textStyle: {
+                        shadowBlur: 10,
+                        shadowColor: '#333'
+                    }
+                },
+                data: [
+                    {
+                        name: 'Sam S Club',
+                        value: 10000,
+                        textStyle: {
+                            color: 'red'
+                        },
+                        emphasis: {
+                            textStyle: {
+                                color: 'red'
+                            }
+                        }
+                    },
+                    {
+                        name: 'Macys',
+                        value: 6181
+                    },
+                    {
+                        name: 'Amy Schumer',
+                        value: 4386
+                    },
+                    {
+                        name: 'Jurassic World',
+                        value: 4055
+                    },
+                    {
+                        name: 'Charter Communications',
+                        value: 2467
+                    },
+                    {
+                        name: 'Chick Fil A',
+                        value: 2244
+                    },
+                    {
+                        name: 'Planet Fitness',
+                        value: 1898
+                    },
+                    {
+                        name: 'Pitch Perfect',
+                        value: 1484
+                    },
+                    {
+                        name: 'Express',
+                        value: 1112
+                    },
+                    {
+                        name: 'Home',
+                        value: 965
+                    },
+                    {
+                        name: 'Johnny Depp',
+                        value: 847
+                    },
+                    {
+                        name: 'Lena Dunham',
+                        value: 582
+                    },
+                    {
+                        name: 'Lewis Hamilton',
+                        value: 555
+                    },
+                    {
+                        name: 'KXAN',
+                        value: 550
+                    },
+                    {
+                        name: 'Mary Ellen Mark',
+                        value: 462
+                    },
+                    {
+                        name: 'Farrah Abraham',
+                        value: 366
+                    },
+                    {
+                        name: 'Rita Ora',
+                        value: 360
+                    },
+                    {
+                        name: 'Serena Williams',
+                        value: 282
+                    },
+                    {
+                        name: 'NCAA baseball tournament',
+                        value: 273
+                    },
+                    {
+                        name: 'Point Break',
+                        value: 265
+                    },
+                    {
+                        name: 'Johnny Depp',
+                        value: 847
+                    },
+                    {
+                        name: 'Lena Dunham',
+                        value: 582
+                    },
+                    {
+                        name: 'Lewis Hamilton',
+                        value: 555
+                    },
+                    {
+                        name: 'KXAN',
+                        value: 550
+                    },
+                    {
+                        name: 'Mary Ellen Mark',
+                        value: 462
+                    },
+                    {
+                        name: 'Farrah Abraham',
+                        value: 366
+                    },
+                    {
+                        name: 'Rita Ora',
+                        value: 360
+                    },
+                    {
+                        name: 'Serena Williams',
+                        value: 282
+                    },
+                    {
+                        name: 'NCAA baseball tournament',
+                        value: 273
+                    },
+                    {
+                        name: 'Point Break',
+                        value: 265
+                    },
+                    {
+                        name: 'Johnny Depp',
+                        value: 847
+                    },
+                    {
+                        name: 'Lena Dunham',
+                        value: 582
+                    },
+                    {
+                        name: 'Lewis Hamilton',
+                        value: 555
+                    },
+                    {
+                        name: 'KXAN',
+                        value: 550
+                    },
+                    {
+                        name: 'Mary Ellen Mark',
+                        value: 462
+                    },
+                    {
+                        name: 'Farrah Abraham',
+                        value: 366
+                    },
+                    {
+                        name: 'Rita Ora',
+                        value: 360
+                    },
+                    {
+                        name: 'Serena Williams',
+                        value: 282
+                    },
+                    {
+                        name: 'NCAA baseball tournament',
+                        value: 273
+                    },
+                    {
+                        name: 'Point Break',
+                        value: 265
+                    },
+                    {
+                        name: 'Johnny Depp',
+                        value: 847
+                    },
+                    {
+                        name: 'Lena Dunham',
+                        value: 582
+                    },
+                    {
+                        name: 'Lewis Hamilton',
+                        value: 555
+                    },
+                    {
+                        name: 'KXAN',
+                        value: 550
+                    },
+                    {
+                        name: 'Mary Ellen Mark',
+                        value: 462
+                    },
+                    {
+                        name: 'Farrah Abraham',
+                        value: 366
+                    },
+                    {
+                        name: 'Rita Ora',
+                        value: 360
+                    },
+                    {
+                        name: 'Serena Williams',
+                        value: 282
+                    },
+                    {
+                        name: 'NCAA baseball tournament',
+                        value: 273
+                    }
+                ]
+            }]
+        };
+
+        let word2 = {{ positive_word_data_list|safe }};
+        let num2 = {{ positive_word_num_list |safe}};
+
+        for (let i = 0; i < 49; i++) {
+            option2.series[0].data[i].name = word2[i+1]
+            option2.series[0].data[i].value = num2[i+1]
+        }
+        chart2.setOption(option2);
+        window.onresize = chart2.resize;
+    }
+
+    function echart_3() {
+        {# 中性 #}
+        let chart3 = echarts.init(document.getElementById('chart_2'));
+
+        let option3 = {
+            tooltip: {},
+            series: [{
+                type: 'wordCloud',
+                gridSize: 2,
+                sizeRange: [12, 50],
+                rotationRange: [-90, 90],
+                shape: 'pentagon',
+                width: 5000,
+                height: 5000,
+                drawOutOfBound: true,
+                textStyle: {
+                    color: function () {
+                        return 'rgb(' + [
+                            Math.round(Math.random() * 160),
+                            Math.round(Math.random() * 160),
+                            Math.round(Math.random() * 160)
+                        ].join(',') + ')';
+                    }
+                },
+                emphasis: {
+                    textStyle: {
+                        shadowBlur: 10,
+                        shadowColor: '#333'
+                    }
+                },
+                data: [
+                    {
+                        name: 'Sam S Club',
+                        value: 10000,
+                        textStyle: {
+                            color: 'red'
+                        },
+                        emphasis: {
+                            textStyle: {
+                                color: 'red'
+                            }
+                        }
+                    },
+                    {
+                        name: 'Macys',
+                        value: 6181
+                    },
+                    {
+                        name: 'Amy Schumer',
+                        value: 4386
+                    },
+                    {
+                        name: 'Jurassic World',
+                        value: 4055
+                    },
+                    {
+                        name: 'Charter Communications',
+                        value: 2467
+                    },
+                    {
+                        name: 'Chick Fil A',
+                        value: 2244
+                    },
+                    {
+                        name: 'Planet Fitness',
+                        value: 1898
+                    },
+                    {
+                        name: 'Pitch Perfect',
+                        value: 1484
+                    },
+                    {
+                        name: 'Express',
+                        value: 1112
+                    },
+                    {
+                        name: 'Home',
+                        value: 965
+                    },
+                    {
+                        name: 'Johnny Depp',
+                        value: 847
+                    },
+                    {
+                        name: 'Lena Dunham',
+                        value: 582
+                    },
+                    {
+                        name: 'Lewis Hamilton',
+                        value: 555
+                    },
+                    {
+                        name: 'KXAN',
+                        value: 550
+                    },
+                    {
+                        name: 'Mary Ellen Mark',
+                        value: 462
+                    },
+                    {
+                        name: 'Farrah Abraham',
+                        value: 366
+                    },
+                    {
+                        name: 'Rita Ora',
+                        value: 360
+                    },
+                    {
+                        name: 'Serena Williams',
+                        value: 282
+                    },
+                    {
+                        name: 'NCAA baseball tournament',
+                        value: 273
+                    },
+                    {
+                        name: 'Point Break',
+                        value: 265
+                    },
+                    {
+                        name: 'Johnny Depp',
+                        value: 847
+                    },
+                    {
+                        name: 'Lena Dunham',
+                        value: 582
+                    },
+                    {
+                        name: 'Lewis Hamilton',
+                        value: 555
+                    },
+                    {
+                        name: 'KXAN',
+                        value: 550
+                    },
+                    {
+                        name: 'Mary Ellen Mark',
+                        value: 462
+                    },
+                    {
+                        name: 'Farrah Abraham',
+                        value: 366
+                    },
+                    {
+                        name: 'Rita Ora',
+                        value: 360
+                    },
+                    {
+                        name: 'Serena Williams',
+                        value: 282
+                    },
+                    {
+                        name: 'NCAA baseball tournament',
+                        value: 273
+                    },
+                    {
+                        name: 'Point Break',
+                        value: 265
+                    },
+                    {
+                        name: 'Johnny Depp',
+                        value: 847
+                    },
+                    {
+                        name: 'Lena Dunham',
+                        value: 582
+                    },
+                    {
+                        name: 'Lewis Hamilton',
+                        value: 555
+                    },
+                    {
+                        name: 'KXAN',
+                        value: 550
+                    },
+                    {
+                        name: 'Mary Ellen Mark',
+                        value: 462
+                    },
+                    {
+                        name: 'Farrah Abraham',
+                        value: 366
+                    },
+                    {
+                        name: 'Rita Ora',
+                        value: 360
+                    },
+                    {
+                        name: 'Serena Williams',
+                        value: 282
+                    },
+                    {
+                        name: 'NCAA baseball tournament',
+                        value: 273
+                    },
+                    {
+                        name: 'Point Break',
+                        value: 265
+                    },
+                    {
+                        name: 'Johnny Depp',
+                        value: 847
+                    },
+                    {
+                        name: 'Lena Dunham',
+                        value: 582
+                    },
+                    {
+                        name: 'Lewis Hamilton',
+                        value: 555
+                    },
+                    {
+                        name: 'KXAN',
+                        value: 550
+                    },
+                    {
+                        name: 'Mary Ellen Mark',
+                        value: 462
+                    },
+                    {
+                        name: 'Farrah Abraham',
+                        value: 366
+                    },
+                    {
+                        name: 'Rita Ora',
+                        value: 360
+                    },
+                    {
+                        name: 'Serena Williams',
+                        value: 282
+                    }
+                ]
+            }]
+        };
+
+        let word3 = {{ middle_word_data_list|safe }};
+        let num3 = {{ middle_word_num_list |safe}};
+
+        for (let i = 0; i < 48; i++) {
+            option3.series[0].data[i].name = word3[i+2]
+            option3.series[0].data[i].value = num3[i+2]
+        }
+        chart3.setOption(option3);
+        window.onresize = chart3.resize;
+    }
+
+    function echart_4() {
+        {# 消极 #}
+        let chart4 = echarts.init(document.getElementById('chart_3'));
+
+        let option4 = {
+            tooltip: {},
+            series: [{
+                type: 'wordCloud',
+                gridSize: 2,
+                sizeRange: [12, 50],
+                rotationRange: [-90, 90],
+                shape: 'pentagon',
+                width: 5000,
+                height: 5000,
+                drawOutOfBound: true,
+                textStyle: {
+                    color: function () {
+                        return 'rgb(' + [
+                            Math.round(Math.random() * 160),
+                            Math.round(Math.random() * 160),
+                            Math.round(Math.random() * 160)
+                        ].join(',') + ')';
+                    }
+                },
+                emphasis: {
+                    textStyle: {
+                        shadowBlur: 10,
+                        shadowColor: '#333'
+                    }
+                },
+                data: [
+                    {
+                        name: 'Sam S Club',
+                        value: 10000,
+                        textStyle: {
+                            color: 'red'
+                        },
+                        emphasis: {
+                            textStyle: {
+                                color: 'red'
+                            }
+                        }
+                    },
+                    {
+                        name: 'Macys',
+                        value: 6181
+                    },
+                    {
+                        name: 'Amy Schumer',
+                        value: 4386
+                    },
+                    {
+                        name: 'Jurassic World',
+                        value: 4055
+                    },
+                    {
+                        name: 'Charter Communications',
+                        value: 2467
+                    },
+                    {
+                        name: 'Chick Fil A',
+                        value: 2244
+                    },
+                    {
+                        name: 'Planet Fitness',
+                        value: 1898
+                    },
+                    {
+                        name: 'Pitch Perfect',
+                        value: 1484
+                    },
+                    {
+                        name: 'Express',
+                        value: 1112
+                    },
+                    {
+                        name: 'Home',
+                        value: 965
+                    },
+                    {
+                        name: 'Johnny Depp',
+                        value: 847
+                    },
+                    {
+                        name: 'Lena Dunham',
+                        value: 582
+                    },
+                    {
+                        name: 'Lewis Hamilton',
+                        value: 555
+                    },
+                    {
+                        name: 'KXAN',
+                        value: 550
+                    },
+                    {
+                        name: 'Mary Ellen Mark',
+                        value: 462
+                    },
+                    {
+                        name: 'Farrah Abraham',
+                        value: 366
+                    },
+                    {
+                        name: 'Rita Ora',
+                        value: 360
+                    },
+                    {
+                        name: 'Serena Williams',
+                        value: 282
+                    },
+                    {
+                        name: 'NCAA baseball tournament',
+                        value: 273
+                    },
+                    {
+                        name: 'Point Break',
+                        value: 265
+                    },
+                    {
+                        name: 'Johnny Depp',
+                        value: 847
+                    },
+                    {
+                        name: 'Lena Dunham',
+                        value: 582
+                    },
+                    {
+                        name: 'Lewis Hamilton',
+                        value: 555
+                    },
+                    {
+                        name: 'KXAN',
+                        value: 550
+                    },
+                    {
+                        name: 'Mary Ellen Mark',
+                        value: 462
+                    },
+                    {
+                        name: 'Farrah Abraham',
+                        value: 366
+                    },
+                    {
+                        name: 'Rita Ora',
+                        value: 360
+                    },
+                    {
+                        name: 'Serena Williams',
+                        value: 282
+                    },
+                    {
+                        name: 'NCAA baseball tournament',
+                        value: 273
+                    },
+                    {
+                        name: 'Point Break',
+                        value: 265
+                    },
+                    {
+                        name: 'Johnny Depp',
+                        value: 847
+                    },
+                    {
+                        name: 'Lena Dunham',
+                        value: 582
+                    },
+                    {
+                        name: 'Lewis Hamilton',
+                        value: 555
+                    },
+                    {
+                        name: 'KXAN',
+                        value: 550
+                    },
+                    {
+                        name: 'Mary Ellen Mark',
+                        value: 462
+                    },
+                    {
+                        name: 'Farrah Abraham',
+                        value: 366
+                    },
+                    {
+                        name: 'Rita Ora',
+                        value: 360
+                    },
+                    {
+                        name: 'Serena Williams',
+                        value: 282
+                    },
+                    {
+                        name: 'NCAA baseball tournament',
+                        value: 273
+                    },
+                    {
+                        name: 'Point Break',
+                        value: 265
+                    },
+                    {
+                        name: 'Johnny Depp',
+                        value: 847
+                    },
+                    {
+                        name: 'Lena Dunham',
+                        value: 582
+                    },
+                    {
+                        name: 'Lewis Hamilton',
+                        value: 555
+                    },
+                    {
+                        name: 'KXAN',
+                        value: 550
+                    },
+                    {
+                        name: 'Mary Ellen Mark',
+                        value: 462
+                    },
+                    {
+                        name: 'Farrah Abraham',
+                        value: 366
+                    },
+                    {
+                        name: 'Rita Ora',
+                        value: 360
+                    },
+                    {
+                        name: 'Serena Williams',
+                        value: 282
+                    },
+                    {
+                        name: 'NCAA baseball tournament',
+                        value: 273
+                    }
+                ]
+            }]
+        };
+
+        let word4 = {{ negative_word_data_list|safe }};
+        let num4 = {{ negative_word_num_list |safe}};
+
+        for (let i = 0; i < 49; i++) {
+            option4.series[0].data[i].name = word4[i+1]
+            option4.series[0].data[i].value = num4[i+1]
+        }
+        chart4.setOption(option4);
+
+        window.onresize = chart4.resize;
+    }
+
+</script>
+</html>
