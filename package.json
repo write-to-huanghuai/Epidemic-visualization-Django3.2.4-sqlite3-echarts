@@ -1,0 +1,8 @@
+{
+  "name": "epidemic_analysis",
+  "version": "1.0.0",
+  "dependencies": {
+    "echarts": "latest",
+    "echarts-wordcloud": "^2.0.0"
+  }
+}
